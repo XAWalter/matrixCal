@@ -14,6 +14,12 @@ public:
 	int getCSize();
 	int getValue(int, int);
 
+	void setValue(int, int, int);
+
+	matrix operator+(matrix);
+	matrix operator-(matrix);
+	matrix operator*(matrix);
+
 	void printMat();
 
 };
