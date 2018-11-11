@@ -1,11 +1,12 @@
+#include "matrix.h"
 #include <iostream>
-
-using namespace std;
 
 
 int main() {
+	
+	matrix x(5, 5);
 
-	cout << "I Love Aggy" << endl;
+	x.printMat();
 
 	system("pause");
 	return 0;
