@@ -59,12 +59,10 @@ void matrix::setValue(int x, int y, int num) {
 //else return 0 matrices
 matrix matrix::operator+(matrix x) {
 	matrix temp(this->getRSize(), this->getCSize());
-	std::cout << "TEST" << std::endl;
-	if (rSize == x.rSize && cSize == x.cSize){
-		for (int i = 0; i < rSize; i++) {
-			for (int j = 0; j < cSize; j++) {
+	if (this->getRSize() == x.getRSize() && this->getCSize() == x.getCSize()){
+		for (int i = 0; i < this->getRSize(); i++) {
+			for (int j = 0; j < this->getCSize(); j++) {
 				temp.setValue(i,j, this->getValue(i, j) + x.getValue(i, j));
-				std::cout << "TEST 2" << std::endl;
 			}
 		}
 	}
@@ -74,11 +72,33 @@ matrix matrix::operator+(matrix x) {
 //subtract matrices if they have the same amount of colums and rows
 //else return 0 matrices
 matrix matrix::operator-(matrix x) {
-	matrix temp(rSize, cSize);
-	if (rSize == x.rSize && cSize == x.cSize) {
-		for (int i = 0; i < rSize; i++) {
-			for (int j = 0; j < cSize; j++) {
+	matrix temp(this->getRSize(), this->getCSize());
+	if (this->getRSize() == x.getRSize() && this->getCSize() == x.getCSize()) {
+		for (int i = 0; i < this->getRSize(); i++) {
+			for (int j = 0; j < this->getCSize(); j++) {
 				temp.setValue(i, j, this->getValue(i, j) - x.getValue(i, j));
+			}
+		}
+	}
+	return temp;
+}
+
+
+//use the * operator to carry out matrices multiplication
+matrix matrix::operator*(matrix x) {
+	matrix temp(this->getCSize(), x.getRSize());
+	int tempN = 0;
+
+	if (this->getCSize() == x.getRSize())
+	{
+		for (int i = 0; i < this->getRSize(); i++){
+			for (int j = 0; j < x.getCSize(); j++){
+				for (int k = 0; k < this->getCSize(); k++)
+				{
+					tempN = tempN + (this->getValue(i, k) * x.getValue(k, j));
+				}
+				temp.setValue(i, j, tempN);
+				tempN = 0;
 			}
 		}
 	}
@@ -90,12 +110,12 @@ matrix matrix::operator-(matrix x) {
 void matrix::printMat() {
 	int count = 0;
 
-	for(int i = 0; i < rSize; i++)
-		for (int j = 0; j < cSize; j++)
+	for(int i = 0; i < this->getRSize(); i++)
+		for (int j = 0; j < this->getCSize(); j++)
 		{
-			std::cout << std::setw(10) << value[i][j];
+			std::cout << std::setw(10) << this->getValue(i,j);
 			count++;
-			if (count == cSize) {
+			if (count == this->getCSize()) {
 				std::cout << std::endl;
 				count = 0;
 			}
