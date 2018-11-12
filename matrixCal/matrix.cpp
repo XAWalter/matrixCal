@@ -9,10 +9,10 @@ matrix::matrix(int row, int col) {
 	rSize = row;
 	cSize = col;
 
-	value = new int*[rSize];
+	value = new double*[rSize];
 
 	for (int i = 0; i < rSize; i++){
-		value[i] = new int[cSize];
+		value[i] = new double[cSize];
 	}
 	
 	int count = 1;
@@ -46,12 +46,12 @@ int matrix::getCSize() {
 
 //pass which row and col
 //return the value in passed row and col
-int matrix::getValue(int x, int y) {
+double matrix::getValue(int x, int y) {
 	return value[x][y];
 }
 
 //set value of passed row and col to new value
-void matrix::setValue(int x, int y, int num) {
+void matrix::setValue(int x, int y, double num) {
 	value[x][y] = num;
 }
 
@@ -87,7 +87,7 @@ matrix matrix::operator-(matrix x) {
 //use the * operator to carry out matrices multiplication
 matrix matrix::operator*(matrix x) {
 	matrix temp(this->getCSize(), x.getRSize());
-	int tempN = 0;
+	double tempN = 0;
 
 	if (this->getCSize() == x.getRSize())
 	{
@@ -104,7 +104,6 @@ matrix matrix::operator*(matrix x) {
 	}
 	return temp;
 }
-
 
 //print matrix
 void matrix::printMat() {

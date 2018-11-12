@@ -5,21 +5,27 @@ class matrix {
 private:
 	int rSize;
 	int cSize;
-	int** value;
+	double** value;
 public:
+	//constructor
 	matrix(int, int);
+	//destructor
 	~matrix();
 
+	//getters
 	int getRSize();
 	int getCSize();
-	int getValue(int, int);
+	double getValue(int, int);
 
-	void setValue(int, int, int);
+	//setters
+	void setValue(int, int, double);
 
+	//overloaded operators
 	matrix operator+(matrix);
 	matrix operator-(matrix);
 	matrix operator*(matrix);
 
+	//functions
 	void printMat();
 
 };

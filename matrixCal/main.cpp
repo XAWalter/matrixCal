@@ -14,10 +14,10 @@ int main() {
 
 
 	//testGS(x);
-
+	//
 	//testAS(x, y);
-
-	//testMD(x, y);
+	//
+	testMD(x, y);
 
 	system("pause");
 	return 0;
@@ -85,6 +85,9 @@ void testMD(matrix a, matrix b) {
 	std::cout << "Before Multiplication" << std::endl;
 	std::cout << "A Matrix" << std::endl;
 	a.printMat();
+
+	b.setValue(1, 1, .12);
+
 	std::cout << "B Matrix" << std::endl;
 	b.printMat();
 	std::cout << "Temp Matrix" << std::endl;
